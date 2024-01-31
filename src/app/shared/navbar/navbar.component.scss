@@ -1,0 +1,25 @@
+.cart-no {
+  position: absolute;
+  min-height: 25px;
+  min-width: 25px;
+  border-radius: 50%;
+  background-color: blue;
+  color: #ffff;
+  text-align: center;
+  top: -5px;
+  right: 32px;
+}
+
+.company-logo {
+  max-height: 2rem;
+}
+
+nav {
+  a {
+    text-decoration: none;
+
+    &.active {
+      color: #6610f2;
+    }
+  }
+}
