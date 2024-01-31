@@ -1,0 +1,50 @@
+<header
+  class="d-flex flex-row align-items-center justify-content-between p-3 px-4 mb-3 bg-white border-bottom fixed-top shadow-sm"
+>
+  <img src="./assets/images/logo.svg" alt="The logo" class="company-logo" />
+  <nav class="my-2 text-uppercase fs-5">
+    <a
+      href=""
+      class="p-2 text-decoration-none app-text-shadow-md"
+      routerLink="/"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <i class="bi bi-house"></i>
+      Home
+    </a>
+    <a
+      href=""
+      class="p-2 text-decoration-none app-text-shadow-md"
+      routerLink="/shop"
+      routerLinkActive="active"
+    >
+      <i class="bi bi-bag-heart"></i>
+      Shop
+    </a>
+    <a
+      href=""
+      class="p-2 text-decoration-none app-text-shadow-md"
+      routerLink="/contact"
+      routerLinkActive="active"
+    >
+      <i class="bi bi-telephone-inbound"></i>
+      Contact
+    </a>
+  </nav>
+  <div class="d-flex align-items-center">
+    <a routerLink="/basket" class="position-relative" href="">
+      <i class="text-dark bi bi-cart-fill me-5" style="font-size: 1.8rem"></i>
+      <div class="cart-no bg-primary">0</div>
+    </a>
+    <ng-container>
+      <a
+        routerLink="/account/login"
+        class="btn btn-outline-primary me-2 shadow"
+      >
+        <i class="bi bi-box-arrow-in-right"></i>
+        Login
+      </a>
+    </ng-container>
+  </div>
+</header>
