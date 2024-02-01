@@ -6,6 +6,8 @@ import { ProductType } from '../shared/models/product-type';
 import { ShopParams } from '../shared/models/shop-params';
 import { NgClass } from '@angular/common';
 import { PagerComponent } from '../shared/pager/pager.component';
+import { PagingHeaderComponent } from '../shared/paging-header/paging-header.component';
+import { ProductItemComponent } from './product-item/product-item.component';
 
 interface SortOptions {
   name: string;
@@ -15,7 +17,12 @@ interface SortOptions {
 @Component({
   selector: 'app-shop',
   standalone: true,
-  imports: [NgClass, PagerComponent],
+  imports: [
+    NgClass,
+    PagerComponent,
+    PagingHeaderComponent,
+    ProductItemComponent,
+  ],
   templateUrl: './shop.component.html',
   styleUrl: './shop.component.scss',
   providers: [ShopService],
