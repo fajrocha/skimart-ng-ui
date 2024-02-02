@@ -1,0 +1,13 @@
+<div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text">
+      <i class="bi bi-search"></i>
+    </span>
+  </div>
+  <input
+    (input)="onChange($event)"
+    type="text"
+    [placeholder]="placeholder"
+    class="form-control"
+  />
+</div>

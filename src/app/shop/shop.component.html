@@ -48,11 +48,10 @@
         }"
       />
       <div class="d-flex mt-2">
-        <input
-          type="text"
+        <app-search-input
+          (textChange)="onSearchingProduct($event)"
           placeholder="Search product"
-          class="form-control me-2"
-        />
+        ></app-search-input>
       </div>
     </div>
     <div class="row row-cols-3 g-3 mb-4">
@@ -74,5 +73,4 @@
     </div>
   </section>
 </div>
-
 }

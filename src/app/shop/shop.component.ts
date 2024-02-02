@@ -8,6 +8,8 @@ import { NgClass } from '@angular/common';
 import { PagerComponent } from '../shared/pager/pager.component';
 import { PagingHeaderComponent } from '../shared/paging-header/paging-header.component';
 import { ProductItemComponent } from './product-item/product-item.component';
+import { Subject, debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
+import { SearchInputComponent } from '../shared/search-input/search-input.component';
 
 interface SortOptions {
   name: string;
@@ -22,6 +24,7 @@ interface SortOptions {
     PagerComponent,
     PagingHeaderComponent,
     ProductItemComponent,
+    SearchInputComponent,
   ],
   templateUrl: './shop.component.html',
   styleUrl: './shop.component.scss',
@@ -108,6 +111,17 @@ export class ShopComponent {
 
     params.pageIndex = page;
     this.setShopParams(params);
+
+    this.getProducts();
+  }
+
+  onSearchingProduct(searchValue: string) {
+    const params = this.shopService.getShopParams();
+    params.pageIndex = 1;
+
+    params.search = searchValue;
+    this.setShopParams(params);
+    console.log(searchValue);
 
     this.getProducts();
   }
