@@ -10,6 +10,7 @@ import { PagingHeaderComponent } from '../shared/paging-header/paging-header.com
 import { ProductItemComponent } from './product-item/product-item.component';
 import { Subject, debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
 import { SearchInputComponent } from '../shared/search-input/search-input.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 interface SortOptions {
   name: string;
