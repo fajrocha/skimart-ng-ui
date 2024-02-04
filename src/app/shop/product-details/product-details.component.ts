@@ -44,7 +44,7 @@ import { CurrencyPipe } from '@angular/common';
     }
   </div>`,
   styleUrl: './product-details.component.scss',
-  providers: [ShopService, BreadcrumbService],
+  providers: [BreadcrumbService],
 })
 export class ProductDetailsComponent {
   product: Product = {} as Product;
