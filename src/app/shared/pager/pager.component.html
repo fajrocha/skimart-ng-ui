@@ -1,0 +1,15 @@
+@if (props) {
+<pagination
+  [boundaryLinks]="true"
+  [totalItems]="props.totalCount"
+  [itemsPerPage]="props.pageSize"
+  [ngModel]="props.pageIndex"
+  [maxSize]="10"
+  (pageChanged)="onPagerChanged($event)"
+  previousText="&lsaquo;"
+  nextText="&rsaquo;"
+  firstText="&laquo;"
+  lastText="&raquo;"
+>
+</pagination>
+}
