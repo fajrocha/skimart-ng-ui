@@ -3,6 +3,7 @@ import { Product } from '../../shared/models/product';
 import { RouterModule } from '@angular/router';
 import { PriceTagComponent } from '../../shared/price-tag/price-tag.component';
 import { CurrencyPipe } from '@angular/common';
+import { BasketService } from '../../basket/basket.service';
 
 @Component({
   selector: 'app-product-item',
@@ -14,7 +15,10 @@ import { CurrencyPipe } from '@angular/common';
 export class ProductItemComponent {
   @Input() product: Product = {} as Product;
 
+  constructor(private basketService: BasketService) {}
+
   addItemToBasket() {
-    throw new Error('Method not implemented.');
+    const productToAdd = this.product;
+    productToAdd && this.basketService.addProductToBasket(productToAdd);
   }
 }

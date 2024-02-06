@@ -35,7 +35,12 @@
   <div class="d-flex align-items-center">
     <a routerLink="/basket" class="position-relative" href="">
       <i class="text-dark bi bi-cart-fill me-5" style="font-size: 1.8rem"></i>
-      <div class="cart-no bg-primary">0</div>
+      <div
+        *ngIf="basketService.basketSource$ | async as basket"
+        class="cart-no bg-primary"
+      >
+        {{ getBasketCount(basket.items) }}
+      </div>
     </a>
     <ng-container>
       <a
@@ -44,6 +49,13 @@
       >
         <i class="bi bi-box-arrow-in-right"></i>
         Login
+      </a>
+      <a
+        routerLink="/account/signup"
+        class="btn btn-outline-primary me-2 shadow"
+      >
+        <i class="bi bi-box-arrow-in-right"></i>
+        Sign Up
       </a>
     </ng-container>
   </div>
