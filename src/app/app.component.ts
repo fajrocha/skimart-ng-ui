@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { SectionHeaderComponent } from './shared/section-header/section-header.component';
+import { BasketService } from './basket/basket.service';
 
 @Component({
   selector: 'app-root',
@@ -16,4 +17,15 @@ import { SectionHeaderComponent } from './shared/section-header/section-header.c
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {}
+export class AppComponent {
+  basketService = inject(BasketService);
+
+  ngOnInit() {
+    this.loadBasket();
+  }
+
+  private loadBasket() {
+    const basketId = localStorage.getItem('basket_id');
+    if (basketId) this.basketService.getBasket(basketId);
+  }
+}

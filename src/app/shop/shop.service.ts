@@ -48,19 +48,18 @@ export class ShopService {
           const cacheKey = this.getCacheKey(this.shopParams);
           this.productCache.set(cacheKey, response);
           return response;
-        }),
+        })
       );
   }
 
   getProduct(id: number) {
     const products = [...this.productCache.values()];
-    console.log(products);
 
     const product = [...this.productCache.values()].reduce(
       (acc, paginatedResult) => {
         return { ...acc, ...paginatedResult.data.find((x) => x.id === id) };
       },
-      {} as Product,
+      {} as Product
     );
 
     if (Object.keys(product).length !== 0) return of(product);
@@ -77,7 +76,7 @@ export class ShopService {
         map((response) => {
           this.brands = response;
           return response;
-        }),
+        })
       );
   }
 
@@ -90,7 +89,7 @@ export class ShopService {
         map((response) => {
           this.types = response;
           return response;
-        }),
+        })
       );
   }
 

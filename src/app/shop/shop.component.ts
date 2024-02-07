@@ -120,7 +120,6 @@ export class ShopComponent {
 
     params.search = searchValue;
     this.setShopParams(params);
-    console.log(searchValue);
 
     this.getProducts();
   }
