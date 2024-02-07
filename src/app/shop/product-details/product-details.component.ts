@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { Product } from '../../shared/models/product';
 import { ActivatedRoute } from '@angular/router';
-import { ShopService } from '../../shop.service';
+import { ShopService } from '../shop.service';
 import { BreadcrumbService } from '@luhuiguo/xng-breadcrumb';
 import { PriceTagComponent } from '../../shared/price-tag/price-tag.component';
 import { CurrencyPipe } from '@angular/common';
+import { BasketService } from '../../basket/basket.service';
+import { log } from '@angular-devkit/build-angular/src/builders/ssr-dev-server';
 
 @Component({
   selector: 'app-product-details',
@@ -24,9 +26,12 @@ import { CurrencyPipe } from '@angular/common';
         <h3 class="text-primary mb-3">{{ product.name }}</h3>
         <app-price-tag>{{ product.price | currency : 'EUR' }}</app-price-tag>
         <div class="d-flex justify-content-start align-items-center mt-1">
-          <select class="form-select product-details__quantity">
+          <select
+            class="form-select product-details__quantity"
+            (change)="onSelectedQuantity($event)"
+          >
             @for (q of quantityDropDown; track q) {
-            <option [value]="q" (click)="onSelectedQuantity($event)">
+            <option [value]="q">
               {{ q }}
             </option>
             }
@@ -54,7 +59,8 @@ export class ProductDetailsComponent {
   constructor(
     private shopService: ShopService,
     private activatedRoute: ActivatedRoute,
-    private bcService: BreadcrumbService
+    private bcService: BreadcrumbService,
+    private basketService: BasketService
   ) {}
 
   ngOnInit() {
@@ -72,11 +78,11 @@ export class ProductDetailsComponent {
   }
 
   addProduct() {
-    throw Error();
+    this.basketService.addProductToBasket(this.product, this.quantitySelected);
   }
 
-  onSelectedQuantity($event: MouseEvent) {
+  onSelectedQuantity($event: Event) {
     this.quantitySelected = +($event.target as HTMLSelectElement).value;
-    console.log(this.quantitySelected);
   }
 }
+

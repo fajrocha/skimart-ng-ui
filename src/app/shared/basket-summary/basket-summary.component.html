@@ -1,0 +1,70 @@
+<div
+  class="table-responsive"
+  *ngIf="basketService.basketSource$ | async as basket"
+>
+  <table class="table">
+    <thead class="bg-light text-uppercase">
+      <tr>
+        <th class="text-primary">Product</th>
+        <th class="text-primary">Price</th>
+        <th class="text-primary">Quantity</th>
+        <th class="text-primary">Total</th>
+        <th class="text-primary" *ngIf="isBasket">Remove</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of basket.items; track item.id) {
+      <tr>
+        <th>
+          <div class="p-2 d-inline-block">
+            <img
+              src="{{ item.pictureUrl }}"
+              alt="{{ item.productName }}"
+              class="img-fluid"
+              style="max-height: 50px"
+            />
+            <div class="ms-3 d-inline-block align-middle">
+              <h5 class="mb-0">
+                <a
+                  routerLink="/shop/{{ item.id }}"
+                  class="text-dark text-decoration-none"
+                >
+                  {{ item.productName }}
+                </a>
+              </h5>
+              <span class="text-muted fst-italic"> Type: {{ item.type }} </span>
+            </div>
+          </div>
+        </th>
+        <td class="align-middle">
+          <strong>{{ item.price | currency : "EUR" }}</strong>
+        </td>
+        <td class="align-middle">
+          <i
+            class="bi bi-dash-circle-fill basket_clickable-icon basket__circle text-primary"
+            (click)="removeBasketItem(item.id, 1)"
+            *ngIf="isBasket"
+          ></i>
+          <strong class="mx-2">{{ item.quantity }}</strong>
+          <i
+            class="bi bi-plus-circle-fill basket_clickable-icon basket__circle text-primary"
+            (click)="addBasketItem(item)"
+            *ngIf="isBasket"
+          ></i>
+        </td>
+        <td class="align-middle">
+          <strong>
+            {{ item.price * item.quantity | currency : "EUR" }}
+          </strong>
+        </td>
+        <td class="align-middle" *ngIf="isBasket">
+          <i
+            class="text-danger basket_clickable-icon basket__trash bi bi-trash"
+            (click)="removeBasketItem(item.id, item.quantity)"
+          ></i>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

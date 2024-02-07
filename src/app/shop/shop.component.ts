@@ -1,5 +1,5 @@
 import { Component, NgModule } from '@angular/core';
-import { ShopService } from '../shop.service';
+import { ShopService } from './shop.service';
 import { Product } from '../shared/models/product';
 import { ProductBrand } from '../shared/models/product-brand';
 import { ProductType } from '../shared/models/product-type';
@@ -8,10 +8,7 @@ import { NgClass } from '@angular/common';
 import { PagerComponent } from '../shared/pager/pager.component';
 import { PagingHeaderComponent } from '../shared/paging-header/paging-header.component';
 import { ProductItemComponent } from './product-item/product-item.component';
-import { Subject, debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
 import { SearchInputComponent } from '../shared/search-input/search-input.component';
-import { NgxSpinnerModule } from 'ngx-spinner';
-import { Pagination } from '../shared/models/pagination';
 
 interface SortOptions {
   name: string;
@@ -123,7 +120,6 @@ export class ShopComponent {
 
     params.search = searchValue;
     this.setShopParams(params);
-    console.log(searchValue);
 
     this.getProducts();
   }

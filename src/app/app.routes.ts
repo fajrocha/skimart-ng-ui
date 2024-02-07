@@ -28,6 +28,11 @@ export const routes: Routes = [
       import('./basket/basket.component').then((mod) => mod.BasketComponent),
   },
   {
+    path: 'checkout',
+    loadChildren: () =>
+      import('./checkout/checkout.routes').then((mod) => mod.CHECKOUT_ROUTES),
+  },
+  {
     path: 'contact',
     loadComponent: () =>
       import('./contact/contact.component').then((mod) => mod.ContactComponent),
