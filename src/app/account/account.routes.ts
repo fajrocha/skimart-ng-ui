@@ -10,5 +10,6 @@ export const ACCOUNT_ROUTES: Routes = [
   {
     path: 'signup',
     component: SignupComponent,
+    data: { breadcrumb: 'sign up' },
   },
 ];
