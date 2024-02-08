@@ -1,0 +1,22 @@
+<div class="form-floating mb-3">
+  <input
+    type="{{ type }}"
+    [formControl]="control"
+    class="form-control"
+    placeholder="{{ label }}"
+    id="{{ label }}"
+    [ngClass]="
+      control.touched ? (control.invalid ? 'is-invalid' : 'is-valid') : null
+    "
+  />
+  <label for="{{ label }}">{{ label }}</label>
+  @if (control.errors?.['required']) {
+  <div class="invalid-feedback">Please enter your {{ label | lowercase }}.</div>
+  } @if (control.errors?.['email']) {
+  <div class="invalid-feedback">Invalid email.</div>
+  } @if (control.errors?.['pattern']) {
+  <div class="invalid-feedback">Password not complex enough.</div>
+  } @if (control.errors?.['emailExists']) {
+  <div class="invalid-feedback">Email is taken.</div>
+  }
+</div>

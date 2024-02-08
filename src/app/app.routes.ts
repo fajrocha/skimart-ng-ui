@@ -33,6 +33,11 @@ export const routes: Routes = [
       import('./checkout/checkout.routes').then((mod) => mod.CHECKOUT_ROUTES),
   },
   {
+    path: 'account',
+    loadChildren: () =>
+      import('./account/account.routes').then((mod) => mod.ACCOUNT_ROUTES),
+  },
+  {
     path: 'contact',
     loadComponent: () =>
       import('./contact/contact.component').then((mod) => mod.ContactComponent),

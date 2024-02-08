@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { BasketItem } from '../models/basket/basket-item';
-import { BasketService } from '../../basket/basket.service';
 import { AsyncPipe, CurrencyPipe, NgIf } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { BasketItem } from '../../models/basket/basket-item';
+import { BasketService } from '../../../basket/basket.service';
 
 interface BasketItemDto {
   id: number;

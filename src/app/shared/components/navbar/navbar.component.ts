@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { BasketService } from '../../basket/basket.service';
-import { BasketItem } from '../models/basket/basket-item';
 import { AsyncPipe, NgIf } from '@angular/common';
+import { BasketService } from '../../../basket/basket.service';
+import { BasketItem } from '../../models/basket/basket-item';
 
 @Component({
   selector: 'app-navbar',
