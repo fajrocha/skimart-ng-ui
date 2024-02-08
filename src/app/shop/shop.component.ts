@@ -5,10 +5,10 @@ import { ProductBrand } from '../shared/models/product-brand';
 import { ProductType } from '../shared/models/product-type';
 import { ShopParams } from '../shared/models/shop-params';
 import { NgClass } from '@angular/common';
-import { PagerComponent } from '../shared/pager/pager.component';
-import { PagingHeaderComponent } from '../shared/paging-header/paging-header.component';
+import { PagerComponent } from '../shared/components/pager/pager.component';
+import { PagingHeaderComponent } from '../shared/components/paging-header/paging-header.component';
 import { ProductItemComponent } from './product-item/product-item.component';
-import { SearchInputComponent } from '../shared/search-input/search-input.component';
+import { SearchInputComponent } from '../shared/components/search-input/search-input.component';
 
 interface SortOptions {
   name: string;

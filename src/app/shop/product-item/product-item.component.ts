@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Product } from '../../shared/models/product';
 import { RouterModule } from '@angular/router';
-import { PriceTagComponent } from '../../shared/price-tag/price-tag.component';
+import { PriceTagComponent } from '../../shared/components/price-tag/price-tag.component';
 import { CurrencyPipe } from '@angular/common';
 import { BasketService } from '../../basket/basket.service';
 

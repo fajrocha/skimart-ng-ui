@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BasketSummaryComponent } from '../shared/basket-summary/basket-summary.component';
+import { BasketSummaryComponent } from '../shared/components/basket-summary/basket-summary.component';
 import { BasketService } from './basket.service';
 import { BasketItem } from '../shared/models/basket/basket-item';
 import { AsyncPipe, NgIf } from '@angular/common';

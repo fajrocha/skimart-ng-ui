@@ -3,7 +3,7 @@ import { Product } from '../../shared/models/product';
 import { ActivatedRoute } from '@angular/router';
 import { ShopService } from '../shop.service';
 import { BreadcrumbService } from '@luhuiguo/xng-breadcrumb';
-import { PriceTagComponent } from '../../shared/price-tag/price-tag.component';
+import { PriceTagComponent } from '../../shared/components/price-tag/price-tag.component';
 import { CurrencyPipe } from '@angular/common';
 import { BasketService } from '../../basket/basket.service';
 import { log } from '@angular-devkit/build-angular/src/builders/ssr-dev-server';
@@ -85,4 +85,3 @@ export class ProductDetailsComponent {
     this.quantitySelected = +($event.target as HTMLSelectElement).value;
   }
 }
-
