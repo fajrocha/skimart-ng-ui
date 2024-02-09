@@ -33,6 +33,12 @@ export const routes: Routes = [
       import('./checkout/checkout.routes').then((mod) => mod.CHECKOUT_ROUTES),
   },
   {
+    path: 'orders',
+    loadChildren: () =>
+      import('./orders/orders.routes').then((m) => m.ORDER_ROUTES),
+    data: { breadcrumb: 'Orders' },
+  },
+  {
     path: 'account',
     loadChildren: () =>
       import('./account/account.routes').then((mod) => mod.ACCOUNT_ROUTES),
