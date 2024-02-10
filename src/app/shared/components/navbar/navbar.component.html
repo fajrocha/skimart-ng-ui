@@ -42,7 +42,7 @@
         {{ getBasketCount(basket.items) }}
       </div>
     </a>
-    <ng-container>
+    <ng-container *ngIf="(accountService.currentUser$ | async) === null">
       <a
         routerLink="/account/login"
         class="btn btn-outline-primary me-2 shadow"
@@ -57,6 +57,34 @@
         <i class="bi bi-box-arrow-in-right"></i>
         Sign Up
       </a>
+    </ng-container>
+    <ng-container *ngIf="accountService.currentUser$ | async as user">
+      <div class="dropdown ms-3 me-5" style="cursor: pointer" dropdown>
+        <a dropdownToggle class="dropdown-toggle">
+          <strong>Welcome {{ user.displayName }}</strong>
+        </a>
+        <ul *dropdownMenu class="dropdown-menu dropdown-menu-right">
+          <li class="py-1">
+            <a routerLink="/basket" class="dropdown-item">
+              <i class="bi bi-cart me-1"></i> View Basket
+            </a>
+          </li>
+          <li class="py-1">
+            <a routerLink="/orders" class="dropdown-item">
+              <i class="bi bi-box-seam me-1"></i> View Orders
+            </a>
+          </li>
+          <div class="dropdown-divider"></div>
+          <li class="py-1">
+            <a
+              (click)="accountService.logout()"
+              routerLink="/orders"
+              class="dropdown-item"
+              >Logout <i class="bi bi-box-arrow-in-right"></i
+            ></a>
+          </li>
+        </ul>
+      </div>
     </ng-container>
   </div>
 </header>
