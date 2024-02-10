@@ -9,6 +9,9 @@
 // ngx-spinner:
 @import "../node_modules/ngx-spinner/animations/timer.css";
 
+/* Importing toaster */
+@import "../node_modules/ngx-toastr/toastr.css";
+
 label.xng-breadcrumb-trail {
   font-weight: 600;
   color: $blue;

@@ -19,9 +19,7 @@ export class ShopService {
 
   private productCache = new Map<string, Pagination<Product[]>>();
 
-  constructor(private httpClient: HttpClient) {
-    console.log('Started shop service');
-  }
+  constructor(private httpClient: HttpClient) {}
 
   getProducts() {
     let requestParams = new HttpParams();

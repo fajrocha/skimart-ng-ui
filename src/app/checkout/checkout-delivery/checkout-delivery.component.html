@@ -1,0 +1,39 @@
+@if (checkoutForm) {
+<div class="mt-4" [formGroup]="checkoutForm">
+  <div class="row" formGroupName="deliveryForm">
+    @for (method of deliveryMethods; track method) {
+    <div class="col-6 form-group">
+      <input
+        type="radio"
+        class="form-check-input"
+        value="{{ method.id }}"
+        id="{{ method.id }}"
+        formControlName="deliveryMethod"
+        (click)="setShippingPrice(method)"
+      />
+      <label for="{{ method.id }}" class="form-check-label ms-2 mb-3">
+        <strong
+          >{{ method.shortName }} -
+          {{ method.price | currency : "EUR" }}</strong
+        >
+        <br />
+        <span class="label-description">{{ method.description }}</span>
+      </label>
+    </div>
+    }
+  </div>
+</div>
+}
+
+<div class="d-flex justify-content-between flex-row mb-5">
+  <button class="btn btn-outline-primary" cdkStepperPrevious>
+    <i class="bi bi-arrow-left-circle"></i> Back to Address
+  </button>
+  <button
+    class="btn btn-outline-primary"
+    [disabled]="checkoutForm?.get('deliveryForm')?.invalid"
+    cdkStepperNext
+  >
+    Go to Review <i class="bi bi-arrow-right-circle"></i>
+  </button>
+</div>

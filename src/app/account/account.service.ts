@@ -5,6 +5,7 @@ import { User } from '../shared/models/account/user';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Address } from '../shared/models/account/address';
+import { log } from '@angular-devkit/build-angular/src/builders/ssr-dev-server';
 
 @Injectable({
   providedIn: 'root',
@@ -22,19 +23,14 @@ export class AccountService {
       return of(null);
     }
 
-    let requestHeaders = new HttpHeaders();
-    requestHeaders = requestHeaders.set('Authorization', `Bearer ${token}`);
+    return this.httpClient.get<User>(`${this.baseUrl}/account`, {}).pipe(
+      map((user) => {
+        if (!user) return null;
 
-    return this.httpClient
-      .get<User>(`${this.baseUrl}/account`, { headers: requestHeaders })
-      .pipe(
-        map((user) => {
-          if (!user) return null;
-
-          this.setToken(user);
-          return user;
-        })
-      );
+        this.setToken(user);
+        return user;
+      })
+    );
   }
 
   login(values: any) {
