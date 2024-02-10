@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './core/not-found/not-found.component';
 import { ServerErrorComponent } from './core/server-error/server-error.component';
+import { authGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
   {
@@ -31,12 +32,14 @@ export const routes: Routes = [
     path: 'checkout',
     loadChildren: () =>
       import('./checkout/checkout.routes').then((mod) => mod.CHECKOUT_ROUTES),
+    canActivate: [authGuard],
   },
   {
     path: 'orders',
     loadChildren: () =>
       import('./orders/orders.routes').then((m) => m.ORDER_ROUTES),
     data: { breadcrumb: 'Orders' },
+    canActivate: [authGuard],
   },
   {
     path: 'account',
