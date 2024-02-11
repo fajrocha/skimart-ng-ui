@@ -17,6 +17,9 @@
         <cdk-step [label]="'Review'">
           <app-checkout-review [appStepper]="appStepper" />
         </cdk-step>
+        <cdk-step [label]="'Payment'">
+          <app-checkout-payment [checkoutForm]="checkoutForm" />
+        </cdk-step>
       </app-stepper>
     </div>
     <div class="col-4">

@@ -18,6 +18,11 @@ export class CheckoutReviewComponent {
   toastr = inject(ToastrService);
 
   createPaymentIntent() {
-    throw Error('Implement create payment intent!');
+    this.basketService.createPaymentIntent().subscribe({
+      next: () => {
+        this.appStepper?.next();
+      },
+      error: (err) => this.toastr.error(err.message),
+    });
   }
 }
