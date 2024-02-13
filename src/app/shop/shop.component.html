@@ -1,76 +1,78 @@
-@if (types.length > 0 && brands.length > 0) {
-<div class="row">
-  <section class="col-3">
-    <h5 class="text-primary"><i class="bi bi-sort-down"></i> Sort</h5>
-    <select class="form-select mb-4" (change)="onSortSelected($event)">
-      @for (sortOpt of sortOpts; track sortOpt.value) {
-      <option [value]="sortOpt.value">
-        {{ sortOpt.name }}
-      </option>
-      }
-    </select>
+<div class="container mt-4">
+  @if (types.length > 0 && brands.length > 0) {
+  <div class="row">
+    <section class="col-3">
+      <h5 class="text-primary"><i class="bi bi-sort-down"></i> Sort</h5>
+      <select class="form-select mb-4" (change)="onSortSelected($event)">
+        @for (sortOpt of sortOpts; track sortOpt.value) {
+        <option [value]="sortOpt.value">
+          {{ sortOpt.name }}
+        </option>
+        }
+      </select>
 
-    <h5 class="my-3 text-primary"><i class="bi bi-tags"></i> Brand</h5>
-    <ul class="list-group">
-      @for (brand of brands; track brand.id) {
-      <li
-        class="list-group-item"
-        [ngClass]="{ active: brand.id === shopParams.brandId }"
-        [value]="brand.id"
-        (click)="onBrandSelected(brand.id)"
-      >
-        {{ brand.name }}
-      </li>
-      }
-    </ul>
+      <h5 class="my-3 text-primary"><i class="bi bi-tags"></i> Brand</h5>
+      <ul class="list-group">
+        @for (brand of brands; track brand.id) {
+        <li
+          class="list-group-item"
+          [ngClass]="{ active: brand.id === shopParams.brandId }"
+          [value]="brand.id"
+          (click)="onBrandSelected(brand.id)"
+        >
+          {{ brand.name }}
+        </li>
+        }
+      </ul>
 
-    <h5 class="my-3 text-primary"><i class="bi bi-snow"></i> Types</h5>
-    <ul class="list-group my-3">
-      @for (type of types; track type.id) {
-      <li
-        class="list-group-item"
-        [ngClass]="{ active: type.id === shopParams.typeId }"
-        [value]="type.id"
-        (click)="onTypeSelected(type.id)"
-      >
-        {{ type.name }}
-      </li>
-      }
-    </ul>
-  </section>
-  <section class="col-9">
-    <div class="d-flex justify-content-between align-items-center mb-3">
-      <app-paging-header
-        [props]="{
-          pageIndex: shopParams.pageIndex,
-          pageSize: shopParams.pageSize,
-          totalCount: totalCount
-        }"
-      />
-      <div class="d-flex mt-2">
-        <app-search-input
-          (textChange)="onSearchingProduct($event)"
-          placeholder="Search product"
-        ></app-search-input>
+      <h5 class="my-3 text-primary"><i class="bi bi-snow"></i> Types</h5>
+      <ul class="list-group my-3">
+        @for (type of types; track type.id) {
+        <li
+          class="list-group-item"
+          [ngClass]="{ active: type.id === shopParams.typeId }"
+          [value]="type.id"
+          (click)="onTypeSelected(type.id)"
+        >
+          {{ type.name }}
+        </li>
+        }
+      </ul>
+    </section>
+    <section class="col-9">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <app-paging-header
+          [props]="{
+            pageIndex: shopParams.pageIndex,
+            pageSize: shopParams.pageSize,
+            totalCount: totalCount
+          }"
+        />
+        <div class="d-flex mt-2">
+          <app-search-input
+            (textChange)="onSearchingProduct($event)"
+            placeholder="Search product"
+          ></app-search-input>
+        </div>
       </div>
-    </div>
-    <div class="row row-cols-3 g-3 mb-4">
-      @for (product of products; track product.id) {
-      <div class="col">
-        <app-product-item [product]="product" />
+      <div class="row row-cols-3 g-3 mb-4">
+        @for (product of products; track product.id) {
+        <div class="col">
+          <app-product-item [product]="product" />
+        </div>
+        }
       </div>
-      }
-    </div>
-    <div class="d-flex justify-content-center">
-      <app-pager
-        [props]="{
-          pageSize: shopParams.pageSize,
-          totalCount: totalCount,
-          pageIndex: shopParams.pageIndex
-        }"
-        (pageChanged)="onPageChange($event)"
-      ></app-pager>
-    </div>
-  </section>
+      <div class="d-flex justify-content-center">
+        <app-pager
+          [props]="{
+            pageSize: shopParams.pageSize,
+            totalCount: totalCount,
+            pageIndex: shopParams.pageIndex
+          }"
+          (pageChanged)="onPageChange($event)"
+        ></app-pager>
+      </div>
+    </section>
+  </div>
+  }
 </div>
-}

@@ -154,9 +154,12 @@ export class CheckoutPaymentComponent {
 
   private async confirmPayment(basket: Basket) {
     if (!this.cardNumber)
-      throw Error('Problem to confirm payment missing card information.');
+      throw Error('Problem to confirm payment, missing card information.');
 
-    const result = this.stripe?.confirmCardPayment(basket.clientSecret!, {
+    if (!basket.clientSecret)
+      throw Error('Problem to confirm payment, basket information.');
+
+    const result = this.stripe?.confirmCardPayment(basket.clientSecret, {
       payment_method: {
         card: this.cardNumber,
         billing_details: {

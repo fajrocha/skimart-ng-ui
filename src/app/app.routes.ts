@@ -46,9 +46,4 @@ export const routes: Routes = [
     loadChildren: () =>
       import('./account/account.routes').then((mod) => mod.ACCOUNT_ROUTES),
   },
-  {
-    path: 'contact',
-    loadComponent: () =>
-      import('./contact/contact.component').then((mod) => mod.ContactComponent),
-  },
 ];
