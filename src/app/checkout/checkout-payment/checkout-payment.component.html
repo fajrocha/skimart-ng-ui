@@ -1,0 +1,45 @@
+@if (checkoutForm) {
+<div class="mt-4" [formGroup]="checkoutForm">
+  <div class="row">
+    <div class="form-group col-12" formGroupName="paymentForm">
+      <app-text-input [label]="'Name on card'" formControlName="nameOnCard" />
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-6">
+      <div class="form-floating">
+        <div class="form-control" #cardNumber></div>
+        <label>Card number</label>
+        <small class="text-danger">{{ cardNumberErrors }}</small>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="form-floating">
+        <div class="form-control" #cardExpiry></div>
+        <label>Card expiry</label>
+        <small class="text-danger">{{ cardExpiryErrors }}</small>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="form-floating">
+        <div class="form-control" #cardCvc></div>
+        <label>Card CVC</label>
+        <small class="text-danger">{{ cardCvcErrors }}</small>
+      </div>
+    </div>
+  </div>
+</div>
+}
+
+<div class="d-flex justify-content-between flex-row mb-5">
+  <button class="btn btn-outline-primary" cdkStepperPrevious>
+    <i class="bi bi-arrow-left-circle"></i> Back to Review
+  </button>
+  <button
+    class="btn btn-outline-primary"
+    (click)="submitOrder()"
+    [disabled]="!validPaymentForms"
+  >
+    Submit Order <i class="bi bi-arrow-right-circle"></i>
+  </button>
+</div>

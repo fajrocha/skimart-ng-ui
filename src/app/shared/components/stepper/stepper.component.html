@@ -1,0 +1,24 @@
+<div class="container">
+  <ul class="nav nav-pills nav-justified">
+    @for (step of steps; track step; let i = $index) {
+    <li class="nav-item">
+      <div class="d-grid">
+        <button
+          (click)="onClick(i)"
+          [ngClass]="{
+            'bg-light': selectedIndex !== i,
+            active: selectedIndex === i
+          }"
+          class="nav-link py-3 text-uppercase fw-bold"
+          disabled
+        >
+          {{ step.label }}
+        </button>
+      </div>
+    </li>
+    }
+  </ul>
+  @if (selected) {
+  <ng-container [ngTemplateOutlet]="this.selected.content"></ng-container>
+  }
+</div>
