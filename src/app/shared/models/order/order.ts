@@ -11,5 +11,11 @@ export interface Order {
   orderItems: OrderItem[];
   subtotal: number;
   total: number;
-  status: string;
+  status: OrderStatus;
+}
+
+export enum OrderStatus {
+  Pending = 'Pending',
+  PaymentReceived = 'PaymentReceived',
+  PaymentFailed = 'PaymentFailed',
 }

@@ -1,1 +1,18 @@
-<p>checkout-success works!</p>
+<div class="container mt-5">
+  <div class="d-flex align-items-center mb-4">
+    <i
+      class="bi bi-check-circle-fill me-2"
+      style="font-size: 1.8rem; color: #027148"
+    ></i>
+    <h2 style="margin: 0">Thank you! Your order is confirmed!</h2>
+  </div>
+  @if (order) {
+  <button routerLink="/orders/{{ order.id }}" class="btn btn-outline-success">
+    View your order
+  </button>
+  } @else {
+  <button routerLink="/orders" class="btn btn-outline-success">
+    View your orders
+  </button>
+  }
+</div>

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { ReplaySubject, map, of } from 'rxjs';
 import { User } from '../shared/models/account/user';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Address } from '../shared/models/account/address';
 import { log } from '@angular-devkit/build-angular/src/builders/ssr-dev-server';
@@ -36,7 +36,11 @@ export class AccountService {
   login(values: any) {
     return this.httpClient
       .post<User>(`${this.baseUrl}/account/login`, values)
-      .pipe(map((user) => this.setToken(user)));
+      .pipe(
+        map((user) => {
+          this.setToken(user);
+        })
+      );
   }
 
   register(values: any) {

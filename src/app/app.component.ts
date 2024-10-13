@@ -34,6 +34,7 @@ export class AppComponent {
 
   private loadUser() {
     const token = localStorage.getItem('token');
+
     this.accountService.loadCurrentUser(token).subscribe();
   }
 }
