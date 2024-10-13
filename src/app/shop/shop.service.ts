@@ -23,7 +23,6 @@ export class ShopService {
 
   getProducts() {
     let requestParams = new HttpParams();
-
     const cachedProducts = this.checkProductsCache();
     if (cachedProducts) return of(cachedProducts);
 

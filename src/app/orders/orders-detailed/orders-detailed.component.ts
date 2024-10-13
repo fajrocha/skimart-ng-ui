@@ -23,6 +23,7 @@ export class OrdersDetailedComponent {
     id &&
       this.orderService.getOrderById(+id).subscribe({
         next: (order) => {
+          console.log(order.orderItems);
           this.order = order;
           this.bcService.set('@OrderDetailed', `Order #${order.id}`);
         },

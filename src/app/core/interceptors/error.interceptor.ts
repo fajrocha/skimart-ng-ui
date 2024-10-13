@@ -1,3 +1,4 @@
+import { log } from '@angular-devkit/build-angular/src/builders/ssr-dev-server';
 import { HttpErrorResponse, HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { Router } from '@angular/router';
@@ -11,22 +12,15 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
   return next(req).pipe(
     catchError((response: HttpErrorResponse) => {
       if (response?.status === 400) {
-        if (response.error.reasons) {
-          toastr.error(response.error.reasons, response.status.toString());
-        } else {
-          toastr.error(response.error.message, response.status.toString());
-        }
+        toastr.error(response.error.detail, response.status.toString());
       }
 
       if (response?.status === 401) {
-        if (response.error.reasons) {
-          toastr.error(response.error.reasons, response.status.toString());
-        } else {
-          toastr.error(response.error.message, response.status.toString());
-        }
+        toastr.error(response.error.detail, response.status.toString());
       }
 
       if (response?.status === 404) {
+        toastr.error(response.error.detail, response.status.toString());
         router.navigateByUrl('/notFound');
       }
       if (response?.status === 500) {

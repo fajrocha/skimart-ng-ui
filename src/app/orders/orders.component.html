@@ -1,11 +1,13 @@
-<div class="container mt-5">
+<div class="container mt-4">
+  @if (orders.length) {
   <div class="row">
     <div class="col-12">
       <table class="table table-hover" style="cursor: pointer">
         <thead class="thead-light">
           <tr>
             <th>Order</th>
-            <th>Date</th>
+            <th>Total</th>
+            <th>Delivery Method</th>
             <th>Total</th>
             <th>Status</th>
           </tr>
@@ -15,6 +17,7 @@
           <tr routerLink="/orders/{{ order.id }}">
             <th># {{ order.id }}</th>
             <td>{{ order.orderDate | date : "medium" }}</td>
+            <td>{{ order.deliveryMethod }}</td>
             <td>{{ order.total | currency : "EUR" }}</td>
             <td>
               <span class="badge" [ngClass]="getStatusStyles(order.status)">{{
@@ -27,4 +30,7 @@
       </table>
     </div>
   </div>
+  } @else {
+  <p>There are no orders in your name!</p>
+  }
 </div>

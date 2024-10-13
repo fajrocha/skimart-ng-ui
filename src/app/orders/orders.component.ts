@@ -1,8 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { OrderService } from './order.service';
-import { Order } from '../shared/models/order/order';
+import { Order, OrderStatus } from '../shared/models/order/order';
 import { CurrencyPipe, DatePipe, NgClass } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { log } from '@angular-devkit/build-angular/src/builders/ssr-dev-server';
 
 @Component({
   selector: 'app-orders',
@@ -16,20 +17,21 @@ export class OrdersComponent {
   orderService = inject(OrderService);
 
   ngOnInit() {
-    this.orderService
-      .getOrdersForUser()
-      .subscribe({ next: (response) => (this.orders = response) });
+    this.orderService.getOrdersForUser().subscribe({
+      next: (response) => {
+        console.log(response);
+        this.orders = response;
+      },
+    });
   }
 
-  getStatusStyles(orderStatus: string) {
-    const status = orderStatus.toLowerCase();
-
-    switch (status) {
-      case 'pending':
+  getStatusStyles(orderStatus: OrderStatus) {
+    switch (orderStatus) {
+      case OrderStatus.Pending:
         return 'bg-warning';
-      case 'payment received':
+      case OrderStatus.PaymentReceived:
         return 'bg-success';
-      case 'payment failed':
+      case OrderStatus.PaymentFailed:
         return 'bg-danger';
       default:
         return 'bg-primary';
