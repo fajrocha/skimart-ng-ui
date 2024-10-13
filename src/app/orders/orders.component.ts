@@ -37,4 +37,17 @@ export class OrdersComponent {
         return 'bg-primary';
     }
   }
+
+  getStatusText(orderStatus: OrderStatus) {
+    switch (orderStatus) {
+      case OrderStatus.Pending:
+        return 'Pending';
+      case OrderStatus.PaymentReceived:
+        return 'Payment Received';
+      case OrderStatus.PaymentFailed:
+        return 'Payment Failed';
+      default:
+        return 'Pending';
+    }
+  }
 }
